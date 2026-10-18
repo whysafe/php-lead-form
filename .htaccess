@@ -1,0 +1,12 @@
+Options -Indexes
+
+# Конфиг, примеры и служебные файлы не отдаются по HTTP
+<FilesMatch "^(config(\.example)?\.php|.*\.(md|sh|jsonl|log))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

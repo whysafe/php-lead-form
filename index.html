@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оставить заявку</title>
+  <meta name="description" content="Форма заявки: оставьте контакты, и мы свяжемся с вами.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="intro">
+      <p class="eyebrow">Обратная связь</p>
+      <h1>Расскажите о задаче</h1>
+      <p class="lead">Оставьте контакт, удобный для связи. Ответим в течение рабочего дня.</p>
+      <ul class="points">
+        <li>Телефон, email или Telegram на выбор</li>
+        <li>Без регистрации и лишних полей</li>
+        <li>Данные используются только для ответа на заявку</li>
+      </ul>
+    </section>
+
+    <form class="card" id="lead-form" action="send.php" method="post" novalidate>
+      <input type="hidden" name="csrf_token" value="">
+
+      <div class="field">
+        <label for="name">Имя</label>
+        <input id="name" name="name" type="text" maxlength="80" autocomplete="name" required
+               aria-describedby="name-error" placeholder="Как к вам обращаться">
+        <p class="error" id="name-error" data-error-for="name" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="contact">Телефон, email или Telegram</label>
+        <input id="contact" name="contact" type="text" maxlength="100" autocomplete="tel" required
+               aria-describedby="contact-error contact-hint" placeholder="+7 900 000-00-00 или @username">
+        <p class="hint" id="contact-hint">Например: +7 900 123-45-67, name@mail.ru, @username</p>
+        <p class="error" id="contact-error" data-error-for="contact" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="message">Сообщение <span class="optional">необязательно</span></label>
+        <textarea id="message" name="message" rows="4" maxlength="2000"
+                  aria-describedby="message-counter" placeholder="Коротко о задаче, сроках, бюджете"></textarea>
+        <p class="hint counter" id="message-counter">0 / 2000</p>
+        <p class="error" data-error-for="message" aria-live="polite"></p>
+      </div>
+
+      <!-- Поле-ловушка для ботов: скрыто от людей и от скринридеров -->
+      <div class="hp" aria-hidden="true">
+        <label for="website">Сайт</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field field-check">
+        <label class="check">
+          <input type="checkbox" name="consent" value="1" required aria-describedby="consent-error">
+          <span>Я даю согласие на обработку персональных данных для ответа на заявку</span>
+        </label>
+        <p class="error" id="consent-error" data-error-for="consent" aria-live="polite"></p>
+      </div>
+
+      <button class="submit" type="submit">
+        <span class="submit-text">Отправить заявку</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script src="assets/form.js" defer></script>
+</body>
+</html>

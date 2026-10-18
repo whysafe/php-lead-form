@@ -1,0 +1,7 @@
+config.php
+data/*.jsonl
+data/*.log
+data/*.json
+!data/index.html
+!data/.htaccess
+.DS_Store
